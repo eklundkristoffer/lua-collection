@@ -7,6 +7,7 @@
   * [Collection:put()](#put)
   * [Collection:groupBy()](#groupby)
   * [Collection:each()](#each)
+  * [Collection:count()](#count)
   
 ## collect
 ```lua
@@ -68,4 +69,9 @@ myCollection:groupBy('state')
 myCollection:each(function (key, value)
     --
 end)
+```
+
+## count
+```lua
+myCollection:count()
 ```

@@ -87,3 +87,10 @@ function Collection:each(callback)
 
     return self
 end
+
+-- Count the number of items in the collection.
+--
+-- @return integer
+function Collection:count()
+    return table.getn(self:all())
+end
