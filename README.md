@@ -8,6 +8,7 @@
   * [Collection:groupBy()](#groupby)
   * [Collection:each()](#each)
   * [Collection:count()](#count)
+  * [Collection:pipe()](#pipe)
   
 ## collect
 ```lua
@@ -74,4 +75,11 @@ end)
 ## count
 ```lua
 myCollection:count()
+```
+
+## pipe
+```lua
+myCollection:pipe(function (collection)
+    collection:push({ price = 250 })
+end)
 ```

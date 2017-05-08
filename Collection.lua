@@ -94,3 +94,11 @@ end
 function Collection:count()
     return table.getn(self:all())
 end
+
+-- Pass the collection to the given callback and return the result.
+--
+-- @param  callable callback
+-- @return mixed
+function Collection:pipe(callback)
+    callback(self)
+end
