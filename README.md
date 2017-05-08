@@ -9,6 +9,7 @@
   * [Collection:each()](#each)
   * [Collection:count()](#count)
   * [Collection:pipe()](#pipe)
+  * [Collection:times()](#times)
   
 ## collect
 ```lua
@@ -82,4 +83,21 @@ myCollection:count()
 myCollection:pipe(function (collection)
     collection:push({ price = 250 })
 end)
+```
+
+## times
+```lua
+myCollection = Collection:times(5, function (number)
+    return number * 9
+end)
+
+myCollection:all()
+
+-- {
+--     [1] = 9,
+--     [2] = 18,
+--     [3] = 27,
+--     [4] = 36,
+--     [5] = 45
+-- }
 ```

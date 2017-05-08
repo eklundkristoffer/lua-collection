@@ -102,3 +102,20 @@ end
 function Collection:pipe(callback)
     callback(self)
 end
+
+-- Create a new collection by invoking the callback a given amount of times.
+--
+-- @param  integer  number
+-- @param  callable callback
+-- @return Collection
+function Collection:times(number, callback)
+    local collection = self.collect({})
+
+    local i = 1
+    while i <= number do
+        collection:push(callback(i))
+        i = i + 1
+    end
+
+    return collection
+end
