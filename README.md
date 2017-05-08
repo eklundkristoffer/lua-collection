@@ -5,7 +5,8 @@
   * [Collection:has()](#has)
   * [Collection:get()](#get)
   * [Collection:put()](#put)
-  * [Collection:groupBy()](#groupBy)
+  * [Collection:groupBy()](#groupby)
+  * [Collection:each()](#each)
   
 ## collect
 ```lua
@@ -60,4 +61,11 @@ myCollection:groupBy('state')
 --         [2] = { ["state"] = "UK" }
 --     }
 -- }
+```
+
+## each
+```lua
+myCollection:each(function (key, value)
+    --
+end)
 ```

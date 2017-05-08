@@ -75,3 +75,15 @@ function Collection:groupBy(key)
 
     return self
 end
+
+-- Execute a callback over each item.
+--
+-- @param  callable  callback
+-- @return self
+function Collection:each(callback)
+    for k,v in pairs(self:all()) do 
+        callback(k, v)
+    end
+
+    return self
+end
