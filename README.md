@@ -45,14 +45,14 @@ myCollection:put('key', 'value')
 
 ## groupBy
 ```lua
-myCollection = Collection.collect({
+local data = {
     { state = 'US' },
     { state = 'UK' },
     { state = 'US' },
     { state = 'UK' }
-})
+}
 
-myCollection:groupBy('state')
+local collection = Collection:collect(data):groupBy('state')
 
 -- { 
 --     ["US"] = { 
