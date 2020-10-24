@@ -1,15 +1,12 @@
 local Collection = {}
-Collection.__index = Collection
+Collection_mt = { __index = Collection }
 
 -- Create a new Collection instance.
 --
--- @param  table  table
+-- @param  data  table
 -- @return self
-function Collection:collect(table)
-    local self = {}
-    setmetatable(self, Collection)
-    self.table = {}
-    return self
+function Collection:collect(data)
+    return setmetatable(data, Collection_mt)
 end
 
 -- Append a new item to the end of Collection.
@@ -17,14 +14,14 @@ end
 -- @param  mixed  value
 -- @return void
 function Collection:push(value)
-    table.insert(self.table, value)
+    table.insert(self, value)
 end
 
--- Returns the Collection table.
+-- Returns the Collection data.
 --
--- @return table
+-- @return data
 function Collection:all()
-    return self.table
+    return self
 end
 
 -- Determine if a given key exists in the Collection.
@@ -32,7 +29,7 @@ end
 -- @param  string  key
 -- @return boolean
 function Collection:has(key)
-    return self.table[key] ~= nil
+    return self[key] ~= nil
 end
 
 -- Returns the item at given key.
@@ -41,7 +38,7 @@ end
 -- @return nil|mixed
 function Collection:get(key)
     if self:has(key) then
-        return self.table[key]
+        return self[key]
     else
         return nil
     end
@@ -53,7 +50,7 @@ end
 -- @param  string  value
 -- @return void
 function Collection:put(key, value)
-    self.table[key] = value
+    self[key] = value
 end
 
 -- Group collection items by given key.
@@ -71,7 +68,7 @@ function Collection:groupBy(key)
         end
     end
 
-    self.table = results
+    self = results
 
     return self
 end
@@ -109,7 +106,7 @@ end
 -- @param  callable callback
 -- @return Collection
 function Collection:times(number, callback)
-    local collection = self.collect({})
+    local collection = self:collect({})
 
     local i = 1
     while i <= number do
